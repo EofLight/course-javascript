@@ -11,7 +11,7 @@
  */
 function forEach(array, fn) {
   for (let index = 0; index < array.length; index++) {
-    fn(array[index]);
+    fn(array[index], index, array);
   }
 }
 
@@ -27,7 +27,7 @@ function forEach(array, fn) {
 function map(array, fn) {
   const result = [];
   for (let index = 0; index < array.length; index++) {
-    result.push(fn(array[index]));
+    result.push(fn(array[index], index, array));
   }
   return result;
 }
@@ -42,11 +42,11 @@ function map(array, fn) {
    reduce([1, 2, 3], (all, current) => all + current) // 6
  */
 function reduce(array, fn, initial) {
-  let result = 0;
   for (let index = 0; index < array.length; index++) {
-    result = index === 0 ? fn(initial, array[index]) : fn(result, array[index]);
+    initial =
+      index === 0 && !initial ? array[0] : fn(initial, array[index], index, array);
   }
-  return result;
+  return initial;
 }
 
 /*
@@ -80,6 +80,7 @@ function createProxy(obj) {
   return new Proxy(obj, {
     set(obj, prop, val) {
       obj[prop] = val * val;
+      return true;
     },
   });
 }
