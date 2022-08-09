@@ -107,7 +107,7 @@ function returnBadArguments(fn, ...args) {
    - number не является числом (с текстом "number is not a number")
    - какой-либо из аргументов div является нулем (с текстом "division by 0")
  */
-function calculator(number = 0, ...args) {
+function calculator(number = 0) {
   if (typeof number !== 'number') throw Error('number is not a number');
   const calc = {
     sum: (...args) => {
