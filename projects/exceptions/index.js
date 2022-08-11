@@ -23,7 +23,7 @@ function isAllTrue(array, fn) {
       throw Error('empty array');
     if (typeof fn !== 'function') throw Error('fn is not a function');
     for (let i = 0; i < array.length; i++) {
-      flag = !fn(array[i]) ? false : true;
+      if (!fn(array[i])) flag = false;
     }
   } catch (e) {
     throw e.message;
