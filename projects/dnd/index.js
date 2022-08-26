@@ -21,7 +21,11 @@ const homeworkContainer = document.querySelector('#app');
 
 document.addEventListener('mousemove', (e) => {});
 
-export function createDiv() {}
+export function createDiv() {
+  const div = document.createElement('div');
+  div.classList.add('draggable-div');
+  return div;
+}
 
 const addDivButton = homeworkContainer.querySelector('#addDiv');
 
