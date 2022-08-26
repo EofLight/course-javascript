@@ -80,7 +80,7 @@ retryButton.addEventListener('click', () => {
 });
 
 filterInput.addEventListener('input', function () {
-  updaterFilter();
+  updaterFilter(this.value);
 });
 
 loadingFailedBlock.classList.add('hidden');
