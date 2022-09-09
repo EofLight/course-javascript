@@ -59,7 +59,6 @@ export default class GeoReview {
           text: document.querySelector('[data-role=review-text]').value,
         },
       };
-      //console.log(JSON.stringify(data));
       try {
         await this.storage.saveReview(data);
         this.map.createPlacemark(coords);
