@@ -11,9 +11,10 @@ export default class GeoReview {
 
   async onInit() {
     const allreviews = JSON.parse(localStorage.getItem(`data`));
-    for (const item of allreviews) {
-      this.map.createPlacemark(item.coords);
-    }
+    if (allreviews !== null)
+      for (const item of allreviews) {
+        this.map.createPlacemark(item.coords);
+      }
 
     document.body.addEventListener('click', this.onDocumentClick.bind(this));
   }
